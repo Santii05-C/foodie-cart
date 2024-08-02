@@ -5,6 +5,7 @@ function Provider({ children }) {
   return (
     <div>
       <Header />
+
       {children}
     </div>
   );
