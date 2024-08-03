@@ -5,10 +5,10 @@ const MASTER_URL = process.env.NEXT_PUBLIC_BACKEDN_API_URL;
 const GetCategory = async () => {
   const query = gql`
     query Categories {
-      categories(first: 10) {
+      categories(first: 50) {
         id
-        name
         slug
+        name
         icon {
           url
         }
