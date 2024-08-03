@@ -14,23 +14,27 @@ function CategoryList() {
       setCategoryList(resp.categories);
     });
   };
-  //1:10
+
   return (
-    <div>
-      <div className="flex gap-4">
+    <div className="mt-10">
+      <div className="flex gap-4 overflow-auto">
         {categoryList &&
           categoryList.map((category, index) => (
             <div
               key={index}
-              className="flex flex-col items-center gap-2 border p-3 rounded-xl min-w-28"
+              className="flex flex-col items-center gap-2 border p-3 rounded-xl min-w-28
+              hover:border-primary hover:bg-orange-50 cursor-pointer group"
             >
               <Image
                 src={category.icon?.url}
                 alt={category.name}
                 width={40}
                 height={40}
+                className="group-hover:scale-125 transition-all duration-2"
               />
-              <h2>{category.name}</h2>
+              <h2 className="text-sm font-medium group-hover:text-primary">
+                {category.name}
+              </h2>
             </div>
           ))}
       </div>
