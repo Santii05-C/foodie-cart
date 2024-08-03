@@ -1,13 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GlobalApi from "../_utils/GlobalApi";
 import Image from "next/image";
+import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 
 function CategoryList() {
+  const listRef = useRef(null);
   const [categoryList, setCategoryList] = useState([]);
   useEffect(() => {
     getCategoryList();
   }, []);
+
   const getCategoryList = () => {
     GlobalApi.GetCategory().then((resp) => {
       console.log(resp.categories);
@@ -15,9 +18,27 @@ function CategoryList() {
     });
   };
 
+  const ScrollRightHandler = () => {
+    if (listRef.current) {
+      listRef.current.scrollBy({
+        left: 200,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const ScrollLeftHandler = () => {
+    if (listRef.current) {
+      listRef.current.scrollBy({
+        left: -200,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <div className="mt-10">
-      <div className="flex gap-4 overflow-auto">
+    <div className="mt-10 relative">
+      <div className="flex gap-4 overflow-auto scrollbar-hide" ref={listRef}>
         {categoryList &&
           categoryList.map((category, index) => (
             <div
@@ -38,8 +59,20 @@ function CategoryList() {
             </div>
           ))}
       </div>
+      <ArrowLeftCircle
+        className="absolute -left-10 top-9  cursor-pointer"
+        onClick={ScrollLeftHandler}
+      />
+      <ArrowRightCircle
+        className="absolute -right-10 top-9 bg-gray-500
+        rounded-full
+        text-white h-8 w-8 cursor-pointer"
+        onClick={() => ScrollRightHandler()}
+      />
     </div>
   );
 }
+
+//1:16
 
 export default CategoryList;
