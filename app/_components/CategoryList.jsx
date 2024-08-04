@@ -60,7 +60,9 @@ function CategoryList() {
           ))}
       </div>
       <ArrowLeftCircle
-        className="absolute -left-10 top-9  cursor-pointer"
+        className="absolute -left-10 top-9 bg-gray-500
+        rounded-full
+        text-white h-8 w-8  cursor-pointer"
         onClick={ScrollLeftHandler}
       />
       <ArrowRightCircle
@@ -72,7 +74,5 @@ function CategoryList() {
     </div>
   );
 }
-
-//1:16
 
 export default CategoryList;
