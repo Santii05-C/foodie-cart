@@ -19,10 +19,13 @@ const GetCategory = async () => {
   return result;
 };
 
-const GetBusiness = async () => {
-  const query = gql`
+const GetBusiness = async (category) => {
+  const query =
+    gql`
     query GetBusiness {
-      restaurants(where: { categories_some: { slug: "pizza" } }) {
+      restaurants(where: { categories_some: { slug: "` +
+    category +
+    `" } }) {
         aBoutUs
         address
         banner {
@@ -39,8 +42,11 @@ const GetBusiness = async () => {
       }
     }
   `;
+  const result = await request(MASTER_URL, query);
+  return result;
 };
 
 export default {
   GetCategory,
+  GetBusiness,
 };
