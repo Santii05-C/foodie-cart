@@ -14,4 +14,5 @@ function BusinessItem({ business }) {
   );
 }
 
+//1:44
 export default BusinessItem;
