@@ -8,17 +8,18 @@ import { useSearchParams } from "next/navigation";
 
 function CategoryList() {
   const listRef = useRef(null);
+
   const [categoryList, setCategoryList] = useState([]);
   const params = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
     setSelectedCategory(params.get("category"));
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     getCategoryList();
-  }, [params]);
+  }, []);
 
   const getCategoryList = () => {
     GlobalApi.GetCategory().then((resp) => {
@@ -52,11 +53,9 @@ function CategoryList() {
           categoryList.map((category, index) => (
             <Link
               href={"?category=" + category.slug}
-              key={index}
-              className={`flex flex-col items-center gap-2 border p-3 rounded-xl min-w-28
-              hover:border-primary hover:bg-orange-50 cursor-pointer group ${
+              className={`flex flex-col items-center gap-2 border p-3 rounded-xl min-w-28 hover:border-primary hover:bg-orange-50 cursor-pointer group ${
                 selectedCategory == category.slug &&
-                "text-primary border-primary shadow-md bg-orange-50"
+                "text-primary border-primary bg-orange-50"
               }`}
             >
               <Image
