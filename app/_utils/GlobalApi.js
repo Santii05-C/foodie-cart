@@ -19,6 +19,28 @@ const GetCategory = async () => {
   return result;
 };
 
+const GetBusiness = async () => {
+  const query = gql`
+    query GetBusiness {
+      restaurants(where: { categories_some: { slug: "pizza" } }) {
+        aBoutUs
+        address
+        banner {
+          url
+        }
+        categories {
+          name
+        }
+        id
+        name
+        restroType
+        slug
+        workingHours
+      }
+    }
+  `;
+};
+
 export default {
   GetCategory,
 };
