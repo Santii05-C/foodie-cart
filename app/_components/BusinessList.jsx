@@ -25,7 +25,14 @@ function BusinessList() {
       <h2 className="font-bold text-2xl">Popular {category} Restaurants</h2>
       <h2 className="font-bold text-primary">{businessList?.length} Results</h2>
 
-      <div>
+      <div
+        className="grid grid-cols-1
+        sm:grid-cols-2
+        md:grid-cols-3
+        lg:grid-cols-4
+        gap-7 mt-2
+      "
+      >
         {businessList.map((restaurants, index) => (
           <div>
             <BusinessItem key={index} business={restaurants} />
