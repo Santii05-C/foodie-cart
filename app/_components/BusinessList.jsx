@@ -8,6 +8,7 @@ function BusinessList() {
   const params = useSearchParams();
   const [category, setCategory] = useState("all");
   const [businessList, setBusinessList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     params && setCategory(params.get("category"));
@@ -15,8 +16,10 @@ function BusinessList() {
   }, [params]);
 
   const getBusinessList = (category_) => {
+    setLoading(true);
     GlobalApi.GetBusiness(category_).then((resp) => {
       setBusinessList(resp?.restaurants);
+      setLoading(false);
     });
   };
 
@@ -33,11 +36,15 @@ function BusinessList() {
         gap-7 mt-2
       "
       >
-        {businessList.map((restaurants, index) => (
-          <div>
-            <BusinessItem key={index} business={restaurants} />
-          </div>
-        ))}
+        {!loading ? (
+          businessList.map((restaurants, index) => (
+            <div>
+              <BusinessItem key={index} business={restaurants} />
+            </div>
+          ))
+        ) : (
+          <div>Loading...</div>
+        )}
       </div>
     </div>
   );

@@ -6,7 +6,8 @@ function BusinessItem({ business }) {
     <div
       className="p-3
     hover:border rounded-xl
-    hover:border-primary
+    hover:border-primary cursor-pointer
+    hover:bg-orange-50
     "
     >
       <Image

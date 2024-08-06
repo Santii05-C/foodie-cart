@@ -10,6 +10,7 @@ export default function Home() {
       <CategoryList />
 
       <BusinessList />
+      {/* <BusinessList /> */}
     </div>
   );
 }
