@@ -37,7 +37,7 @@ function BusinessList() {
         gap-7 mt-2
       "
       >
-        {loading
+        {!loading
           ? businessList.map((restaurants, index) => (
               <div>
                 <BusinessItem key={index} business={restaurants} />
