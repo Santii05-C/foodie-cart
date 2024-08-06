@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import GlobalApi from "../_utils/GlobalApi";
 import BusinessItem from "./BusinessItem";
+import BusinessItemSkelton from "./BusinessItemSkelton";
 
 function BusinessList() {
   const params = useSearchParams();
@@ -36,15 +37,15 @@ function BusinessList() {
         gap-7 mt-2
       "
       >
-        {!loading ? (
-          businessList.map((restaurants, index) => (
-            <div>
-              <BusinessItem key={index} business={restaurants} />
-            </div>
-          ))
-        ) : (
-          <div>Loading...</div>
-        )}
+        {loading
+          ? businessList.map((restaurants, index) => (
+              <div>
+                <BusinessItem key={index} business={restaurants} />
+              </div>
+            ))
+          : [1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
+              <BusinessItemSkelton />
+            ))}
       </div>
     </div>
   );
