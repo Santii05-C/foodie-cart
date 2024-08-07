@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function BusinessItem({ business }) {
   return (
-    <div
+    <Link
+      href={"/restaurant/" + business?.slug}
       className="p-3
     hover:border rounded-xl
     hover:border-primary cursor-pointer
@@ -30,8 +32,9 @@ function BusinessItem({ business }) {
           </h2>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
 export default BusinessItem;
+//2:07
