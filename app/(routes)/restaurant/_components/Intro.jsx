@@ -1,3 +1,4 @@
+import { MapPin } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -19,10 +20,14 @@ function Intro({ restaurant }) {
       )}
 
       <h2 className="text-3xl font-bold mt-2">{restaurant.name}</h2>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 ">
         <Image src={"/star.png"} alt="star" width={20} height={20} />
         <label className=" text-gray-500">4.5 (56)</label>
       </div>
+      <h2 className="text-gray-500 mt-2 flex gap-2">
+        <MapPin />
+        {restaurant.address}
+      </h2>
     </div>
   );
 }
