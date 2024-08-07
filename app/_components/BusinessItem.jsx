@@ -37,4 +37,3 @@ function BusinessItem({ business }) {
 }
 
 export default BusinessItem;
-//2:07
