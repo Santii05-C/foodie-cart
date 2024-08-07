@@ -6,11 +6,7 @@ function BusinessItem({ business }) {
   return (
     <Link
       href={"/restaurant/" + business?.slug}
-      className="p-3
-    hover:border rounded-xl
-    hover:border-primary cursor-pointer
-    hover:bg-orange-50
-    "
+      className="p-3 hover:border rounded-xl hover:border-primary transition-all  ease-in-out hover:bg-orange-50 cursor-pointer"
     >
       <Image
         src={business.banner?.url}
