@@ -28,9 +28,9 @@ function MenuSection({ restaurant }) {
       </div>
       <div className="col-span-3">
         <h2 className="font-extrabold text-lg">{menuItemList.category}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           {menuItemList?.menuItem?.map((item, index) => (
-            <div>
+            <div className="p-2">
               <Image
                 src={item?.productImage.url}
                 alt={item.name}
@@ -38,6 +38,12 @@ function MenuSection({ restaurant }) {
                 height={120}
                 className="object-cover w-[120px] h-[120px rounded-lg"
               />
+
+              <div>
+                <h2>{item.name}</h2>
+                <h2>{item.price}</h2>
+                <h2>{item.description}</h2>
+              </div>
             </div>
           ))}
         </div>
