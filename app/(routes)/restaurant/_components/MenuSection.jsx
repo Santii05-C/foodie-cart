@@ -28,11 +28,22 @@ function MenuSection({ restaurant }) {
       </div>
       <div className="col-span-3">
         <h2 className="font-extrabold text-lg">{menuItemList.category}</h2>
-        <div></div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {menuItemList?.menuItem?.map((item, index) => (
+            <div>
+              <Image
+                src={item?.productImage.url}
+                alt={item.name}
+                width={120}
+                height={120}
+                className="object-cover w-[120px] h-[120px rounded-lg"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 export default MenuSection;
-//2:30
