@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
-import { Search } from "lucide-react";
+import { Search, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -18,7 +18,13 @@ function Header() {
       </div>
 
       {isSignedIn ? (
-        <UserButton />
+        <div className="flex gap-3">
+          <div className="flex gap-2">
+            <ShoppingCart />
+            <label className="p-1  px-2 rounded-full bg-slate-200">0</label>
+          </div>
+          <UserButton />
+        </div>
       ) : (
         <div className="flex gap-5">
           <SignInButton mode="modal">
