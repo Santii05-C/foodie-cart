@@ -1,3 +1,4 @@
+import GlobalApi from "@/app/_utils/GlobalApi";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
 import { SquarePlus } from "lucide-react";
@@ -17,7 +18,18 @@ function MenuSection({ restaurant }) {
     setMenuItemList(result[0]);
   };
 
-  const addToCartHandler = (item) => {};
+  const addToCartHandler = (item) => {
+    const data = {
+      email: user?.primaryEmailAddress?.emailAddress,
+      name: item?.name,
+      description: item?.description,
+      productImage: item?.productImage,
+      price: item?.price,
+    };
+    GlobalApi.addToCart(data).then((resp) => {
+      console.log(resp);
+    });
+  };
 
   return (
     <div className="grid grid-cols-4 mt-2">
