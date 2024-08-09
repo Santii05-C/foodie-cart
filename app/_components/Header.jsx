@@ -18,8 +18,8 @@ function Header() {
       </div>
 
       {isSignedIn ? (
-        <div className="flex gap-3">
-          <div className="flex gap-2">
+        <div className="flex gap-3 items-center">
+          <div className="flex gap-2 items-center">
             <ShoppingCart />
             <label className="p-1  px-2 rounded-full bg-slate-200">0</label>
           </div>
@@ -38,5 +38,5 @@ function Header() {
     </div>
   );
 }
-//52:36
+//2:41
 export default Header;
