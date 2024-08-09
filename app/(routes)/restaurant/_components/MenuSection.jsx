@@ -1,13 +1,16 @@
+import { CartUpdateContext } from "@/app/_context/CartUpdateContext";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
 import { SquarePlus } from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 function MenuSection({ restaurant }) {
   const [menuItemList, setMenuItemList] = useState([]);
   const { user } = useUser();
+  const { updateCart, setUpdateCart } = useContext(CartUpdateContext);
   useEffect(() => {
     restaurant?.menu && FilterMenu(restaurant?.menu[0]?.category);
   }, [restaurant]);
@@ -19,6 +22,7 @@ function MenuSection({ restaurant }) {
   };
 
   const addToCartHandler = (item) => {
+    toast("Adding to Cart");
     const data = {
       email: user?.primaryEmailAddress?.emailAddress,
       name: item?.name,
@@ -26,9 +30,15 @@ function MenuSection({ restaurant }) {
       productImage: item?.productImage,
       price: item?.price,
     };
-    GlobalApi.addToCart(data).then((resp) => {
-      console.log(resp);
-    });
+    GlobalApi.addToCart(data).then(
+      (resp) => {
+        console.log(resp);
+        toast("Added to Cart");
+      },
+      (error) => {
+        toast("Error while adding into the cart");
+      }
+    );
   };
 
   return (
