@@ -12,7 +12,13 @@ function MenuSection({ restaurant }) {
   const { user } = useUser();
   const { updateCart, setUpdateCart } = useContext(CartUpdateContext);
 
-  const GetUserCart = () => {};
+  const GetUserCart = () => {
+    GlobalApi.GetUserCart(user?.primaryEmailAddress.emailAddress).then(
+      (resp) => {
+        console.log(resp);
+      }
+    );
+  };
 
   useEffect(() => {
     restaurant?.menu && FilterMenu(restaurant?.menu[0]?.category);

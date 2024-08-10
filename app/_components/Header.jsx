@@ -13,7 +13,16 @@ function Header() {
 
   useEffect(() => {
     console.log("Execute Me!");
-  }, [updateCart]);
+    user && GetUserCart();
+  }, [updateCart && user]);
+
+  const GetUserCart = () => {
+    GlobalApi.GetUserCart(user?.primaryEmailAddress.emailAddress).then(
+      (resp) => {
+        console.log(resp);
+      }
+    );
+  };
 
   return (
     <div className="flex justify-between items-center p-6 md:px-20 shadow-md ">
