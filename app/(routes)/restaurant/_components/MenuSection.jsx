@@ -11,6 +11,9 @@ function MenuSection({ restaurant }) {
   const [menuItemList, setMenuItemList] = useState([]);
   const { user } = useUser();
   const { updateCart, setUpdateCart } = useContext(CartUpdateContext);
+
+  const GetUserCart = () => {};
+
   useEffect(() => {
     restaurant?.menu && FilterMenu(restaurant?.menu[0]?.category);
   }, [restaurant]);
