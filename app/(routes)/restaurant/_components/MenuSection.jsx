@@ -12,14 +12,6 @@ function MenuSection({ restaurant }) {
   const { user } = useUser();
   const { updateCart, setUpdateCart } = useContext(CartUpdateContext);
 
-  const GetUserCart = () => {
-    GlobalApi.GetUserCart(user?.primaryEmailAddress.emailAddress).then(
-      (resp) => {
-        console.log(resp);
-      }
-    );
-  };
-
   useEffect(() => {
     restaurant?.menu && FilterMenu(restaurant?.menu[0]?.category);
   }, [restaurant]);
@@ -68,7 +60,10 @@ function MenuSection({ restaurant }) {
         <h2 className="font-extrabold text-lg">{menuItemList.category}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
           {menuItemList?.menuItem?.map((item, index) => (
-            <div className="p-2 flex gap-3 border rounded-xl hover:border-primary cursor-pointer">
+            <div
+              className="p-2 flex gap-3 border rounded-xl hover:border-primary cursor-pointer "
+              key={index}
+            >
               <Image
                 src={item?.productImage.url}
                 alt={item.name}

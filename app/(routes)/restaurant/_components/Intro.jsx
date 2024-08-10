@@ -5,7 +5,7 @@ import React from "react";
 function Intro({ restaurant }) {
   return (
     <div>
-      {restaurant ? (
+      {restaurant?.banner?.url ? (
         <div>
           <Image
             src={restaurant?.banner?.url}

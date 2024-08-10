@@ -127,7 +127,7 @@ const addToCart = async (data) => {
 const GetUserCart = async (userEmail) => {
   const query =
     gql`
-    query MyQuery {
+    query GetUserCart {
       userCarts(where: { email: "` +
     userEmail +
     `" }) {

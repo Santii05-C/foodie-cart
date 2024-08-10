@@ -53,6 +53,7 @@ function CategoryList() {
           categoryList.map((category, index) => (
             <Link
               href={"?category=" + category.slug}
+              key={index}
               className={`flex flex-col items-center gap-2 border p-3 rounded-xl min-w-28 hover:border-primary hover:bg-orange-50 cursor-pointer group ${
                 selectedCategory == category.slug &&
                 "text-primary border-primary bg-orange-50"

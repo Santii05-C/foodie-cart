@@ -6,13 +6,15 @@ import { Search, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import React, { useContext, useEffect } from "react";
 import { CartUpdateContext } from "../_context/CartUpdateContext";
+import GlobalApi from "../_utils/GlobalApi";
 
 function Header() {
   const { user, isSignedIn } = useUser();
   const { updateCart, setUpdateCart } = useContext(CartUpdateContext);
 
   useEffect(() => {
-    console.log("Execute Me!");
+    console.log("first");
+
     user && GetUserCart();
   }, [updateCart && user]);
 

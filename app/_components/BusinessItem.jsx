@@ -16,7 +16,7 @@ function BusinessItem({ business }) {
         className="h-[130px] rounded-xl object-cover"
       />
       <div className="mt-2">
-        <h2 className="font-bold text-lg">{business.name}</h2>
+        <h2 className="font-bold text-lg ">{business.name}</h2>
         <div className="flex justify-between items-center">
           <div className="flex gap-2 items-center">
             <Image src="/star.png" alt="star" width={14} height={14} />
