@@ -33,7 +33,7 @@ function MenuSection({ restaurant }) {
     };
     GlobalApi.addToCart(data).then(
       (resp) => {
-        console.log(resp);
+        console.log(data);
         toast("Added to Cart");
       },
       (error) => {

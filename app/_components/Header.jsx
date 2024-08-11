@@ -14,12 +14,11 @@ function Header() {
 
   useEffect(() => {
     console.log("first");
-
     user && GetUserCart();
   }, [updateCart && user]);
 
   const GetUserCart = () => {
-    GlobalApi.GetUserCart(user?.primaryEmailAddress.emailAddress).then(
+    GlobalApi.GetUserCart(user?.primaryEmailAddress?.emailAddress).then(
       (resp) => {
         console.log(resp);
       }
